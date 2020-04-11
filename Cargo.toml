@@ -74,13 +74,14 @@ encoding_rs = "0.8"
 futures-core = { version = "0.3.0", default-features = false }
 futures-util = { version = "0.3.0", default-features = false }
 http-body = "0.3.0"
-hyper = { version = "0.13.4", default-features = false, features = ["tcp"] }
+hyper = { git = "https://github.com/qrayven/hyper",branch = "custom-cipherlist", default-features = false, features = ["tcp"] }
 lazy_static = "1.4"
 log = "0.4"
 mime = "0.3.7"
 mime_guess = "2.0"
 percent-encoding = "2.1"
-tokio = { version = "0.2.5", default-features = false, features = ["tcp", "time"] }
+#tokio = { version = "0.2.5", default-features = false, features = ["tcp", "time"] }
+tokio = { git = "https://github.com/qrayven/tokio", branch = "custom-cipherlist", default-features = false, features = ["tcp", "time"] }
 pin-project-lite = "0.1.1"
 
 # TODO: candidates for optional features
@@ -90,9 +91,10 @@ serde_urlencoded = "0.6.1"
 # Optional deps...
 
 ## default-tls
-hyper-tls = { version = "0.4", optional = true }
-native-tls-crate = { version = "0.2", optional = true, package = "native-tls" }
-tokio-tls = { version = "0.3.0", optional = true }
+#hyper-tls = { version = "0.4", optional = true }
+hyper-tls = { git = "https://github.com/qrayven/hyper-tls", branch = "custom-cipherlist", optional = true }
+native-tls-crate = { git = "https://github.com/qrayven/rust-native-tls", branch = "custom-cipherlist", package="native-tls", optional=true}
+tokio-tls = { git = "https://github.com/qrayven/tokio", branch = "custom-cipherlist", optional = true }
 
 # rustls-tls
 hyper-rustls = { version = "0.20", default-features = false, features = ["webpki-tokio"], optional = true }
@@ -110,19 +112,20 @@ async-compression = { version = "0.3.0", default-features = false, features = ["
 
 
 ## socks
-tokio-socks = { version = "0.2", optional = true }
+tokio-socks = {  git = "https://github.com/qrayven/tokio-socks", branch = "custom-cipherlist", optional = true }
 
 ## trust-dns
 trust-dns-resolver = { version = "0.19", optional = true }
 
 [target.'cfg(not(target_arch = "wasm32"))'.dev-dependencies]
 env_logger = "0.6"
-hyper = { version = "0.13", default-features = false, features = ["tcp", "stream"] }
+hyper = {  git = "https://github.com/qrayven/hyper",branch = "custom-cipherlist", default-features = false, features = ["tcp", "stream"] }
 serde = { version = "1.0", features = ["derive"] }
 libflate = "0.1"
 brotli_crate = { package = "brotli", version = "3.3.0" }
 doc-comment = "0.3"
-tokio = { version = "0.2.0", default-features = false, features = ["macros"] }
+#tokio = { version = "0.2.0", default-features = false, features = ["macros"] }
+tokio = { git = "https://github.com/qrayven/tokio", branch = "custom-cipherlist", default-features = false, features = ["macros"] }
 
 [target.'cfg(windows)'.dependencies]
 winreg = "0.6"
